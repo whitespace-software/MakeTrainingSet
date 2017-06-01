@@ -58,19 +58,38 @@ namespace MakeTrainingSet
         private string TidyText( string str )
         {
             StringBuilder sb = new StringBuilder();
+
+            var foundComma = false;
+            
             foreach (char c in str)
             {
-                if ( Char.IsWhiteSpace(c) || c == ',')
+                if ( Char.IsWhiteSpace(c) )
                     sb.Append(' ');
-                else if (c == '"')
-                    sb.Append("'");
+                else if (c == ',')
+                {
+                    sb.Append(",");
+                    foundComma = true;
+                }
+                else if (c == '“' || c == '”' || c == '"')
+                {
+                    sb.Append('"');
+                    sb.Append('"');
+                }
                 else
                     sb.Append(c);
             }
+
+            if (foundComma)
+            {
+                sb.Insert(0, '"');
+                sb.Append('"');
+            }
+
             string result = sb.ToString();
             string twoSpaces = "  ", oneSpace = " ";
             while (result.Contains(twoSpaces))
                 result = result.Replace(twoSpaces, oneSpace);
+            
             return result;
         }
 
