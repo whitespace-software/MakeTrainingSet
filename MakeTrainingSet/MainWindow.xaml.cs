@@ -59,7 +59,7 @@ namespace MakeTrainingSet
         {
             StringBuilder sb = new StringBuilder();
 
-            var foundComma = false;
+            var requiresEncapsulatingQuotes = false;
             
             foreach (char c in str)
             {
@@ -68,18 +68,19 @@ namespace MakeTrainingSet
                 else if (c == ',')
                 {
                     sb.Append(",");
-                    foundComma = true;
+                    requiresEncapsulatingQuotes = true;
                 }
                 else if (c == '“' || c == '”' || c == '"')
                 {
                     sb.Append('"');
                     sb.Append('"');
+                    requiresEncapsulatingQuotes = true;
                 }
                 else
                     sb.Append(c);
             }
 
-            if (foundComma)
+            if (requiresEncapsulatingQuotes)
             {
                 sb.Insert(0, '"');
                 sb.Append('"');
