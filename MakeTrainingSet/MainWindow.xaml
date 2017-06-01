@@ -5,8 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MakeTrainingSet"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        
-    </Grid>
+        Title="Make Training Set" Height="220" Width="363" ResizeMode="CanMinimize">
+    <StackPanel Background="LightGray" Margin="0,0,0,-1">
+        <StackPanel Orientation="Horizontal" Margin="10,10,10,0">
+            <Label>Folder</Label>
+            <TextBox x:Name="txtFolder" Width="160" TextChanged="SettingsChanged" VerticalAlignment="Center"/>
+            <Label>Prefix</Label>
+            <TextBox x:Name="txtPrefix" Width="80" TextChanged="SettingsChanged" VerticalAlignment="Center"></TextBox>
+        </StackPanel>
+        <TextBlock x:Name="txtValue" Margin="10,10,10,0" TextWrapping="Wrap" Text="TextBlock" Height="65" Background="White"/>
+        <StackPanel Orientation="Horizontal" Margin="10,10,10,0">
+            <Button Content="Yes" Background="LightGreen" Grid.Row="1" Grid.Column="0" Width="61" Height="24" Margin="0,0,10,0" Click="YesButton_Click"/>
+            <RadioButton x:Name="chkAutoYes" Content="Auto-Yes" VerticalAlignment="Center" Margin="0,0,2,0"/>
+            <RadioButton Content="Select" IsChecked="True" VerticalAlignment="Center" />
+            <RadioButton x:Name="chkAutoNo" Content="Auto-No" VerticalAlignment="Center" Margin="2,0,0,0"/>
+            <Button Content="No" Background="Red" Width="60" Height="24" Margin="10,0,0,0" Click="NoButton_Click"/>
+        </StackPanel>
+        <Label x:Name="lblSayuser" Margin="10,10,10,0" Content="OK"/>
+    </StackPanel>
 </Window>
